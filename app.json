@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/index/helloWorld"
+    "pages/index/helloWorld",
+    "pages/index/components"
   ],
   "window": {
     "backgroundTextStyle": "light",

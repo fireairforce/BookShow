@@ -1,4 +1,8 @@
 <!--index.wxml-->
+<navigator target="" url="" hover-class="navigator-hover" open-type="redirect">
+  哈哈哈
+</navigator>
+  
 <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -17,7 +21,27 @@
       </movable-view>
 
    </movable-area>
-
+   <!-- icon -->
+   <icon type="success_no_circle"></icon>
+   <icon class="" type="info" size="23"></icon>
+   <!-- 文字组件 -->
+   <text class="" decode="true">&lt;</text>
+   <!-- 富文本组件 -->
+   <rich-text nodes="{{}}">
+   </rich-text>
+   <!-- 进度条组件 -->
+   <progress percent="20" show-info />
+    <progress percent="40" stroke-width="12" />
+    <progress percent="60" color="pink" />
+    <progress percent="80" active />
+    <!-- 表单组件 -->
+    <view class="form-component">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <input name="input" placeholder="填写内容here" />
+         <button form-type="submit">提交</button>     
+         <button form-type="reset">重置</button>
+      </form>  
+    </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

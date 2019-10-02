@@ -67,5 +67,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  formSubmit: function(e){
+    console.log(e.detail.value);
+  },
+  formReset: function(){
+    console.log(`发生了一波重置`);
   }
 })
+
+
