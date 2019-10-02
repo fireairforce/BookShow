@@ -21,6 +21,17 @@ Page({
       url:'/pages/index/helloWorld'
     })
   },
+  redclick:function(sender){
+    wx.showModal({
+      title: '点击红色',
+      content: '',
+    });
+    console.log(sender);
+  },
+  remove: function(sender){
+    console.log(sender);
+    console.log(sender.changeTouches[0].pageX);
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

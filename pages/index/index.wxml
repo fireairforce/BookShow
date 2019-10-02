@@ -10,7 +10,14 @@
   <view bindtap="bindMyViewTap">
     点击我跳转Hello World
   </view>
-    
+   <!--创建一个move-area  -->
+   <movable-area style="width:100%;height:100%;background:gray">
+      <!-- 可移动view黄色,宽高100rpx -->
+      <movable-view style="background:red;width:100rpx;height:100rpx;" direction="all" bindtap='redclick' bindtouchmove='redmove'>
+      </movable-view>
+
+   </movable-area>
+
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
