@@ -1,4 +1,4 @@
-// pages/index/components.js
+// pages/home/home.js
 Page({
 
   /**
