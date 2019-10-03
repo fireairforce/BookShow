@@ -1,1 +1,17 @@
-/* pages/home/home.wxss */
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.item{
+    width: 100px;
+    height: 100px;
+}
+.bg1{
+    background-color: yellow;
+}
+.bg2{
+    background-color: blue;
+}
+.bg3{
+    background-color: red;
+}
