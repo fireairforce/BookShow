@@ -52,4 +52,47 @@ data: {
 },
 ```
 
-这么表示即可。
+这么表示即可。里面`properties`里面可以指定使用一些组件外部能够操作的数据，就如上面`like`和`count`肯定是要外部能够操作的,我们就需要把这些属性发在`properties`里面去就可以了
+
+```js
+  properties: {
+    like: {
+      type: Boolean,
+    },
+    count: {
+      type: Number,
+    }
+  },
+  data: {
+    yesSrc:'./images/like.png',
+    noSrc: './images/like@dis.png'
+  },
+```
+
+事件的定义在`methods`里面去拿数据就可了。
+
+然后我们去给里面绑定一个事件:
+```js
+methods: {
+    onLike:function (e) {
+       let { like, count } = this.properties;
+       count = like ? count - 1 : count + 1;
+       this.setData({
+         count,
+         like: !like
+       }) 
+       console.log(e);
+    }
+  }
+```
+
+这里注意到小程序里面的一些事件(这里以`like`组件作为例子)，我们都是写在`methods`里面的。如果我们想调用这个绑定这个事件到`wxml`里面去的话，使用小程序相对应的语法即可(`bind:tap="onLike"`):
+
+```js
+<!-- image组件是有默认的宽和高的 -->
+<view class="container" bind:tap="onLike">
+   <image src="{{ like ? yesSrc : noSrc }}" />
+   <text>{{ count }}</text>
+</view>
+```
+
