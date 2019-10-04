@@ -1,6 +1,5 @@
 <view class="wrapper">
-    <view class="item bg1"></view>
-    <view class="item bg2"></view>
-    <view class="item bg3"></view>
+    <view class="item bg1">1</view>
+    <view class="item bg2">2</view>
+    <view class="item bg3">3</view>
 </view>
-  
