@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+     test: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'http://bl.7yue.pro/v1/classic/latest',
+      header:{
+        appkey: "RdshydjBvcYZhMZC"
+      },
+      // res是服务器返回给我们的数据
+      success: (res)=>{
+        console.log(this.data.test);
+        console.log(res);
+      }
+    })
   },
 
   /**

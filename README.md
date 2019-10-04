@@ -1,4 +1,4 @@
-## Notes 
+## 布局 
 迫于生计开始写小程序.
 
 小程序重要的东西有布局:
@@ -25,7 +25,7 @@
 
 组件最好不要留有空白间距。
 
-### 数据显示
+## 数据显示
 数据的来源
 - WXML
 - JS->WXML
@@ -71,7 +71,7 @@ data: {
 
 事件的定义在`methods`里面去拿数据就可了。
 
-然后我们去给里面绑定一个事件:
+然后我们去给里面绑定一个事件(注意学习一波这里取数据的方法是可以使用`es6`的,修改数据使用的是类似于`react`里面的那套`api`):
 ```js
 methods: {
     onLike:function (e) {
@@ -96,3 +96,38 @@ methods: {
 </view>
 ```
 
+## 生命周期函数
+利用小程序来访问`API`数据,还是和之前的框架(例如`react`,`vue`)一样，我们需要一个生命周期函数.
+
+一般我们创建一个页面里面的`js`文件里面都会帮我们默认写好生命周期函数。
+
+生命周期函数的概念是和`react`,`vue`里面的生命周期函数没有区别的。
+
+一般我们发送请求的数据都会放在`onLoad()`这个生命周期函数之类，这个生命周期函有点类似于`react`里面被移除的一个`API`叫做`componentWillMount`,但是这里我们一般都把请求写在这里(毕竟小程序没有`react`那么多的东西要去拓展。。。)
+
+### onLoad
+我们在这个地方进行数据请求的话，我们会使用`wx.request()`这个函数去进行一个`api`的调用。相关文档参考[这里](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html#API)
+
+使用的话大概是这个样子为:
+
+```js
+  onLoad: function (options) {
+    wx.request({
+      url: 'http://bl.7yue.pro/v1/classic/latest',
+      // res是服务器返回给我们的数据,在success这个里面能拿到
+      success: function(res){
+        console.log(res);
+      }
+    })
+  },
+```
+
+对于开发过程中产生的无法校验的`http`接口的情况的话，我们可以在小程序开发者工具里面关闭掉关于`http`校验的相关操作。`wx.request()`这里也和`axios`一样，这里就是个异步函数。所以想拿到值，我们需要自己来操作一下(上面就是一种操作)。
+
+回调函数有个缺陷就是，在回调函数的外面`this`是有值的，比如`success`这个函数的外面是可以抓到值的，但是到`success`里面使用`this.data.xxx`去拿`data`里面的数据是拿不到的。这个时候我们把`this`赋值一下就ok了.`let self = this`(就是之前那种传统的方法)，当然这里我们用箭头函数就OK了
+
+```js
+success:(res) => {
+    console.log(res);
+}
+```

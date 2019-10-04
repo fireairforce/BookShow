@@ -28,7 +28,6 @@ Component({
          count,
          like: !like
        }) 
-       console.log(e);
     }
   }
 })
