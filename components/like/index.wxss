@@ -1,5 +1,21 @@
 /* 图片尺寸会整体过大 */
 .container {
+     /* 设定组件宽度为自适应,使得这个组件不会占满整行，同时也具备有flex的特性 */
+    display: inline-flex;
+    flex-direction: row;
+    padding: 10rpx;
+}
+.container image{
     width: 32rpx;
     height: 28rpx;
+}
+
+.container text {
+    font-size: 24rpx;
+    /* 消除文字的上下间距 */
+    line-height: 24rpx;
+    color: #bbbbbb;
+    position: relative;
+    bottom: 10rpx;
+    left: 6rpx;
 }

@@ -1,2 +1,5 @@
 <!-- image组件是有默认的宽和高的 -->
-<image src="./images/like.png" class="container" />
+<view class="container" >
+<image src="{{ like ? yesSrc : noSrc }}" />
+<text>{{ like ? count1 : count2 }}</text>
+</view>

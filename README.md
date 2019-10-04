@@ -21,3 +21,35 @@
 - flex
 - rpx
 
+设置全局样式在`app.wxss`里面的`page`里面设置就可以了，不需要自己去设置，现在大部分样式都可以继承下来了。
+
+组件最好不要留有空白间距。
+
+### 数据显示
+数据的来源
+- WXML
+- JS->WXML
+- 服务器->JS->WXML
+
+数据绑定 组件内部的数据放在`js`文件里面的`data`里面去,然后`wxml`去调用的时候`{{ name }}`这样表示即可。 
+
+三元表达式这样调用即可:
+```js
+<text>{{ like ? count1 : count2 }}</text>
+```
+
+如果我们想要在一个图片里面这么玩的话，可以把`src`的值封装成变量即可。
+```js
+<image src="{{ like ? yesSrc : noSrc }}" />
+```
+```js
+data: {
+    like: false,
+    count1: 99,
+    count2: 999,
+    yesSrc:'./images/like.png',
+    noSrc: './images/like@dis.png'
+},
+```
+
+这么表示即可。
