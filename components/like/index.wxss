@@ -1,1 +1,5 @@
-/* components/like/index.wxss */
+/* 图片尺寸会整体过大 */
+.container {
+    width: 32rpx;
+    height: 28rpx;
+}

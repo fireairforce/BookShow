@@ -1,1 +1,2 @@
-<text>components/like/index.wxml</text>
+<!-- image组件是有默认的宽和高的 -->
+<image src="./images/like.png" class="container" />
