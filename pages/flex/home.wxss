@@ -1,0 +1,33 @@
+.wrapper{
+    /* 主轴和交叉轴都取决于flex-direction的设定 */
+    display: flex;
+    flex-direction: row;
+    /* 实现了一个平均分布 */
+    /* justify-content: space-between; */
+    /* 实现一个等距分布 */
+    /* justify-content: space-around; */
+    /* 在水平轴的时候搞一个居中显示 */
+    justify-content: center;
+    /* 垂直轴上面的居中 */
+    /* align-items: center; */
+    /* 交叉轴的特性 */
+    /* 它会在容器没有设定高度的时候对容器来一个拉伸,有高度就无效 */
+    /* align-items: stretch; */
+    /* 根据容器里面的文字来进行一个对齐 */
+    /* align-items: baseline; */
+    height: 400px;
+    background: gray;
+}
+.item{
+    width: 100px;
+    height: 100px;
+}
+.bg1{
+    background-color: yellow;
+}
+.bg2{
+    background-color: blue;
+}
+.bg3{
+    background-color: red;
+}
