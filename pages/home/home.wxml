@@ -4,6 +4,6 @@
         <v-like class="like" bind:like="LikeClick" like="{{ classicData.like_status }}" count="{{ classicData.fav_nums }}"  />    
     </view>  
     <v-movie image="{{ classicData.image }}" text="{{ classicData.content }}" />
-    <v-navi class="navi" title="{{ classicData.title }}" first="{{ first }}" latest="{{ latest }}"/>
+    <v-navi bind:left="naviLeft" bind:right="naviRight" class="navi" title="{{ classicData.title }}" first="{{ first }}" latest="{{ latest }}"/>
 </view>
   

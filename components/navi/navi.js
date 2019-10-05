@@ -10,5 +10,18 @@ Component({
     first: Boolean,
     latest: Boolean
   },
-  methods: {}
+  methods: {
+    onLeft: function(e) {
+      // 如果这个属性不是最新的话
+       if(!this.properties.latest){
+        this.triggerEvent('left',{},{})  
+       }
+    },
+
+    onRight: function (e) {
+      if(!this.properties.first){
+        this.triggerEvent('right',{},{})        
+      }
+    }
+  }
 })

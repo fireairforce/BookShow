@@ -25,6 +25,14 @@ Page({
     likeModel.like(behavior,id,type);
   },
 
+  naviLeft: function() {
+
+  },
+
+  naviRight: function() {
+
+  },
+
   onReady: function () {
 
   },
