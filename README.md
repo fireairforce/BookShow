@@ -134,8 +134,26 @@ success:(res) => {
 
 由于我们前面在`like`组件里面使用了两个`properities`(分别为`count`和`like`),这里我们就可以使用父组件来将这两个值从父组件这里传递下去。
 
-`home.js`
+`home.wxml`
 
 ```js
-
+<v-like like="{{ classicData.like_status }}" count="{{ classicData.fav_nums }}"  />
 ```
+
+通过这样可以类似`react`里面的`props`将值传递下去。
+
+在`home.js`这边获取到请求的数据还是和以前`react`里面一样，拿到数据后把他使用请求数据的组件的状态存储下面就可了。
+
+```js
+onLoad: function (options) {
+  classic.getLatest(res => {
+    console.log(res);
+      this.setData({
+        classicData:res
+      }) 
+  })
+}
+```
+
+这个`setData`和`react`里面的`setState`是一模一样的= =,都是用来搞数据更新的，但你不能直接去改变`data`里面的数据值。
+
