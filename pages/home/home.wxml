@@ -1,5 +1,9 @@
-<view class="header">
-    <v-epsoide class="epsoide" index="{{classicData.index}}"/>
-    <v-like class="like" bind:like="LikeClick" like="{{ classicData.like_status }}" count="{{ classicData.fav_nums }}"  />    
-</view>  
-<v-movie image="{{ classicData.image }}" text="{{ classicData.content }}" />
+<view class="container">
+    <view class="header">
+        <v-epsoide class="epsoide" index="{{classicData.index}}"/>
+        <v-like class="like" bind:like="LikeClick" like="{{ classicData.like_status }}" count="{{ classicData.fav_nums }}"  />    
+    </view>  
+    <v-movie image="{{ classicData.image }}" text="{{ classicData.content }}" />
+    <v-navi class="navi" title="{{ classicData.title }}" first="{{ first }}" latest="{{ latest }}"/>
+</view>
+  

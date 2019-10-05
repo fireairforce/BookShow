@@ -5,7 +5,9 @@ let likeModel = new LikeModel();
 Page({
   data: {
      test: 1,
-     classicData:{}
+     classicData:null,
+     latest: true,
+     first: false
   },
   onLoad: function (options) {
     // 获取到最新的数据
