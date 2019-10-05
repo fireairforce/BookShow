@@ -1,16 +1,6 @@
-// components/classic/music/music.js
+import { classicBeh } from '../classic-beh';
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-    img: String,
-    content: String
-  },
-
-  /**
-   * 组件的初始数据
-   */
+  behaviors: [ classicBeh ],  
   data: {
     pauseSrc: 'images/player@waitting.png',
     playSrc: 'images/player@playing.png'

@@ -3,7 +3,7 @@
         <v-epsoide class="epsoide" index="{{classicData.index}}"/>
         <v-like class="like" bind:like="LikeClick" like="{{ classicData.like_status }}" count="{{ classicData.fav_nums }}"  />    
     </view>  
-    <v-movie image="{{ classicData.image }}" text="{{ classicData.content }}" />
+    <v-movie img="{{ classicData.image }}" content="{{ classicData.content }}" />
     <v-navi bind:left="naviLeft" bind:right="naviRight" class="navi" title="{{ classicData.title }}" first="{{ first }}" latest="{{ latest }}"/>
 </view>
   

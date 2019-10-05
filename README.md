@@ -265,3 +265,23 @@ Component({
 ```
 
 当然这个地方也不能在`observer`内部使用`this.setData`里面去修改`index`这个值，因为这里会出现无限递归调用的现象，就像在`render`里面使用`componentDidMount`一样。这个地方所以需要使用一个类似中转变量的东西`_index`来去回避那个陷阱。(不要在一个属性的监听值里面去修改这个监听值的内容)。
+
+## Behavior
+
+小程序里面提供了组件的复用机制可以使用`behavior`这个`API`。
+
+比如说我们的多个组件里面有一些可以共用的东西，例如一些`properities`或者是`data`或者是`methods`甚至是`attached`这个生命周期函数都可以。
+
+现在假设我们的组件里面都用共用的两个属性叫做`img`和`content`,我们在组件目录下的根路径下面新建一个`classic-beh.js`的文件，里面使用`Behavior`来新建一个公共的属性即可:
+
+```js
+let classicBeh = Behavior({
+    properties: {
+        img:String,
+        content: String
+    },
+})
+
+export { classicBeh }
+```
+
