@@ -1,34 +1,25 @@
-import { HTTP } from '../../utils/http'
-let http = new HTTP();
+import { ClassicModel } from './../../models/classic';
+let classic = new ClassicModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     test: 1
+     test: 1,
+     classicData:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    http.request({
-      url:`v1/classic/latest`,
-      success: (res) => {
-        console.log(res);
-      }
+    classic.getLatest(res => {
+      console.log(res);
+       this.setData({
+         classicData:res
+       }) 
     })
-    // wx.request({
-    //   url: 'http://bl.7yue.pro/v1/classic/latest',
-    //   header:{
-    //     appkey: "RdshydjBvcYZhMZC"
-    //   },
-    //   // res是服务器返回给我们的数据
-    //   success: (res)=>{
-    //     console.log(res);
-    //   }
-    // })
   },
 
   /**

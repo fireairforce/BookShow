@@ -131,3 +131,11 @@ success:(res) => {
   console.log(res);
 }
 ```
+
+由于我们前面在`like`组件里面使用了两个`properities`(分别为`count`和`like`),这里我们就可以使用父组件来将这两个值从父组件这里传递下去。
+
+`home.js`
+
+```js
+
+```
