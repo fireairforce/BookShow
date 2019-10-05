@@ -3,4 +3,3 @@
     <image class="tag" src="images/movie@tag.png" />
     <text class="content">{{text}}</text>
 </view>
-  
