@@ -1,8 +1,5 @@
-// components/like/index.js
+
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     like: {
       type: Boolean,
@@ -16,10 +13,6 @@ Component({
     yesSrc:'./images/like.png',
     noSrc: './images/like@dis.png'
   },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
     onLike:function (e) {
        let { like, count } = this.properties;
@@ -28,6 +21,13 @@ Component({
          count,
          like: !like
        }) 
+        // 发起一个自定义事件 
+        let behavior = this.properties.like ? 'like' : 'cancel'
+        // 在这里激活我们的自定义事件like
+        this.triggerEvent('like',{
+           behavior
+        },{})
     }
+    
   }
 })

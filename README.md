@@ -157,3 +157,44 @@ onLoad: function (options) {
 
 这个`setData`和`react`里面的`setState`是一模一样的= =,都是用来搞数据更新的，但你不能直接去改变`data`里面的数据值。
 
+## 创建自定义事件
+我们在使用组件的时候，有的时候可能需要去使用到一些我们自己定义的一系列事件(因为使用原有的事件会有些东西无法获取到)。我们之间监听一个组件的点击事件使用的是`bind:tap="xxx(事件名)"`,类似于`react`里面的`onClick`事件一样hhh。
+
+但是我们在父组件里面这样去监听子组件的点击事件的时候是拿不到当前子组件里面的一些状态。
+
+所以我们要先在子组件里面创建一个自定义事件来通知页面点击了事件，然后把父组件知道的状态传递出去，我们需要使用小程序里面自带的自定义事件里面的激活`API`来完成操作即可。
+
+```js
+methods: {
+    onLike:function (e) {
+       let { like, count } = this.properties;
+       count = like ? count - 1 : count + 1;
+       this.setData({
+         count,
+         like: !like
+       }) 
+        // 发起一个自定义事件 
+        let behavior = this.properties.like ? 'like' : 'cancel'
+        // 在这里激活我们的自定义事件like,它里面还有第三个参数
+        this.triggerEvent('like',{
+           behavior
+        },{})
+    } 
+  }
+```
+
+然后我们将父组件里面需要调用的事件绑定到`like`这个东西上面即可:
+
+```html
+<v-like bind:like="LikeClick"   />
+```
+
+然后父组件里面定义一下这个点击事件:
+```js
+LikeClick: function (e) {
+  console.log(e);
+},
+```
+
+这个时候`event`那里就可以拿到子组件传递过来的`behavior`了。
+
