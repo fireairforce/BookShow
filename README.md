@@ -13,6 +13,16 @@
  "usingComponents": {}
 ```
 
+注意这个地方使用组件的话一定要记得具体精确到文件里面去(貌似小程序这里不会默认解析`index`)
+
+```json
+"usingComponents":{
+  "v-like":"/components/like/index",
+  "v-movie":"/components/classic/movie/index",
+  "v-epsoide":"/components/epsoide/index"
+}
+```
+
 小程序用`px`做单位的话，会直接乘以二去换算，所以一般使用`rpx`来作为单位(`rpx`尺寸是按照`1:1`来进行换算的),同时`rpx`是可以针对不同的机型去进行一个自适应。
 
 字体的大小可能需要使用`px`(可能没必要使用随着机型去进行放大。)
@@ -198,3 +208,60 @@ LikeClick: function (e) {
 
 这个时候`event`那里就可以拿到子组件传递过来的`behavior`了。
 
+## 组件的生命周期函数
+就想`pages`有自己的生命周期函数，组件(`components`)里面也会有自己的生命周期函数。
+
+我们想在组件里面输出一些值的内容的话是可以在生命周期函数里面输出的:
+一般会使用`attached`这个生命周期函数的钩子。
+
+```js
+Component({
+  properties: {
+     index:Number
+  },
+  data: {
+      year: Number,
+      month: String, 
+  },
+  methods: {
+
+  },
+  attached: function(){
+    console.log(this.properties);
+    console.log(this.data);
+  }
+})
+```
+
+`attached`这个地方会打印出一个属性的值。`properties`和`data`这个地方会输出同样的值(所以这个地方我们不要给这两个东西写个同样的值，一般情况下`data`会覆盖掉`properties`下面同样的值)。
+
+从父组件传递过来的数字，我们一般不放在`attached`这个生命周期函数里面去写，我们会使用`properities`这个属性里面的一个`observer`参数来去做。
+
+```js
+Component({
+  properties: {
+     index:{
+       type: String,
+       observer: function(newVal,oldVal,changePath){
+         let val = newVal < 10 ? '0' + newVal : newVal;
+         this.setData({
+           _index: val 
+         })
+       }
+     }
+  },
+  data: {
+      year:0,
+      month: '', 
+      _index: '0'
+  },
+  methods: {
+
+  },
+  attached: function(){
+   
+  }
+})
+```
+
+当然这个地方也不能在`observer`内部使用`this.setData`里面去修改`index`这个值，因为这里会出现无限递归调用的现象，就像在`render`里面使用`componentDidMount`一样。这个地方所以需要使用一个类似中转变量的东西`_index`来去回避那个陷阱。(不要在一个属性的监听值里面去修改这个监听值的内容)。
