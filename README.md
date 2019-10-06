@@ -285,3 +285,21 @@ let classicBeh = Behavior({
 export { classicBeh }
 ```
 
+然后我们需要使用这些公共属性的组件是可以直接去里面调用这些东西的:
+```js
+import { classicBeh } from '../classic-beh';
+Component({
+  behaviors: [ classicBeh ],  
+  properities: {
+
+  },
+  data: {
+    pauseSrc: 'images/player@waitting.png',
+    playSrc: 'images/player@playing.png'
+  },
+  methods: {
+
+  }
+})
+```
+在组件内部通过`behaviors`这个属性去直接进行一波的调用。这样以后这些组件有了共同的趋势了的话，这样我们直接去`behavior`里面去添加属性。

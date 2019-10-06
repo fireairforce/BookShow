@@ -4,15 +4,13 @@ let classicModel = new ClassicModel();
 let likeModel = new LikeModel(); 
 Page({
   data: {
-     test: 1,
      classicData:null,
      latest: true,
      first: false
   },
-  onLoad: function (options) {
+  onLoad: function () {
     // 获取到最新的数据
     classicModel.getLatest(res => {
-      console.log(res);
        this.setData({
          classicData:res
        }) 
@@ -25,57 +23,23 @@ Page({
     likeModel.like(behavior,id,type);
   },
 
-  naviLeft: function() {
-
-  },
-
   naviRight: function() {
-
+    this._updateClassic('previous');
   },
 
-  onReady: function () {
-
+  naviLeft: function() {
+    this._updateClassic('next');
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //  通过这个地方来更新每次点击下一页的数据
+  _updateClassic: function (nextOrprevious) {
+    let { index } = this.data.classicData;
+    classicModel.getClassic(index,nextOrprevious,(res) => {
+       this.setData({
+         classicData:res,
+         latest: classicModel.isLatest(res.index),
+         first: classicModel.isFirst(res.index)
+       })
+    })
   }
 })
