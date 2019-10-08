@@ -3,6 +3,9 @@
     "pages/home/home",
     "components/classic/music/music"
   ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
