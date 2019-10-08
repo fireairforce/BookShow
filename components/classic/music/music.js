@@ -19,16 +19,14 @@ Component({
 
   // 在wx-if触发的一个生命周期函数
   attached: function () {
-    console.log(this.properties);
-    console.log('触发');
-    console.log(mMgr.src);
        //  这里调用methods里面的方法不用使用this.methods
-       this._recoverStatus(); 
+       this._recoverStatus();
+        // 将总控开关和我们自己的开关进行一个同步 
+       this._monitorSwitch();
   },
   // 在切换组件的时候对之前的音乐播放器来个暂停
   detached: function(event) {
     //  mMgr.stop();
-   
   },
 
   methods: {
@@ -61,7 +59,21 @@ Component({
           playing: true
         })
       }
+     },
+      // 用来监听音乐播放的一些事件
+     _monitorSwitch: function () {
+       mMgr.onPlay(() => {
+          this._recoverStatus();
+       })
+       mMgr.onPause(() => {
+        this._recoverStatus();
+       })
+       mMgr.onStop(() => {
+         this._recoverStatus();
+       })
+       mMgr.onEnded(() => {
+         this._recoverStatus();
+       })
      }
-
   }
 })
