@@ -6,15 +6,20 @@ Page({
   data: {
      classicData:null,
      latest: true,
-     first: false
+     first: false,
+     like_status:false,
+     fav_nums: 0
   },
   onLoad: function () {
     // 获取到最新的数据
     classicModel.getLatest(res => {
        this.setData({
-         classicData:res
+         classicData:res,
+         like_status: res.like_status,
+         fav_nums: res.fav_nums
        }) 
     })
+    console.log(this.data);
   },
 
   LikeClick: function (e) {
@@ -35,11 +40,21 @@ Page({
   _updateClassic: function (nextOrprevious) {
     let { index } = this.data.classicData;
     classicModel.getClassic(index,nextOrprevious,(res) => {
-       this.setData({
+      this._getLikeStatus(res.id,res.type); 
+      this.setData({
          classicData:res,
          latest: classicModel.isLatest(res.index),
          first: classicModel.isFirst(res.index)
        })
+    })
+  },
+
+  _getLikeStatus: function (artID,category) {
+    likeModel.getClassicLikeStatus(artID, category, (res) => {
+      this.setData({
+        like_status: res.like_status,
+        fav_nums: res.fav_nums
+      })
     })
   }
 })
