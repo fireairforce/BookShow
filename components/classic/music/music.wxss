@@ -24,3 +24,19 @@
     bottom: 58rpx;
 }
 
+.rotation {
+    animation: run 5s linear infinite;
+    -webkit-animation: run 5s linear infinite;
+    -moz-animation: run 5s linear infinite;
+    -o-animation: run 5s linear infinite;
+}
+
+@keyframes run{     
+    from{     
+        -webkit-transform:rotate(360deg);     
+    }     
+    to{     
+        -webkit-transform:rotate(0deg);     
+    }     
+}
+
