@@ -4,7 +4,8 @@
         <v-like class="like" bind:like="LikeClick" like="{{ like_status }}" count="{{ fav_nums }}"  />    
     </view>  
     <v-movie hidden="{{classicData.type !==100 }}" img="{{ classicData.image }}" content="{{ classicData.content }}" />
-    <v-music hidden="{{classicData.type !==200 }}" img="{{ classicData.image }}" src="{{ classicData.url }}" title="{{ classicData.title }}" content="{{ classicData.content }}" />    
+    <!-- wx-if在组件切换的时候可以触发组件的生命周期函数而hidden不会 -->
+    <v-music wx:if="{{classicData.type ===200 }}" img="{{ classicData.image }}" src="{{ classicData.url }}" title="{{ classicData.title }}" content="{{ classicData.content }}" />    
     <v-essay hidden="{{classicData.type !==300 }}" img="{{ classicData.image }}" content="{{ classicData.content }}" />       
     <v-navi bind:left="naviLeft" bind:right="naviRight" class="navi" title="{{ classicData.title }}" first="{{ first }}" latest="{{ latest }}"/>
 </view>
