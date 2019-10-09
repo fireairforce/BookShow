@@ -24,7 +24,7 @@ Page({
 
   LikeClick: function (e) {
     const { id, type } = this.data.classicData; 
-    let behavior = e.detail.behavior;
+    const behavior = e.detail.behavior;
     likeModel.like(behavior,id,type);
   },
 
@@ -38,7 +38,7 @@ Page({
 
   //  通过这个地方来更新每次点击下一页的数据
   _updateClassic: function (nextOrprevious) {
-    let { index } = this.data.classicData;
+    const { index } = this.data.classicData;
     classicModel.getClassic(index,nextOrprevious,(res) => {
       this._getLikeStatus(res.id,res.type); 
       this.setData({

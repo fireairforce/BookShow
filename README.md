@@ -9,3 +9,5 @@ A application for mini-program
 + util:里面封装了`wx.request`请求函数
 + models:数据的请求都是写在这里
 
+## Support
+小程序里面不能使用`async/await`。

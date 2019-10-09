@@ -14,18 +14,18 @@ Component({
   data: {
     pauseSrc: './images/player@waitting.png',
     playSrc: './images/player@playing.png',
-    playing: false
+    playing: false,
   },
 
   // 在wx-if触发的一个生命周期函数
-  attached: function () {
+  attached(){
        //  这里调用methods里面的方法不用使用this.methods
        this._recoverStatus();
         // 将总控开关和我们自己的开关进行一个同步 
        this._monitorSwitch();
   },
   // 在切换组件的时候对之前的音乐播放器来个暂停
-  detached: function(event) {
+  detached() {
     //  mMgr.stop();
   },
 
