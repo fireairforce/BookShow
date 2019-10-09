@@ -2,12 +2,13 @@ import { BookModel } from '../../models/book';
 const bookmodel = new BookModel();
 Page({
   data: {
-    //  多个异步等待合并
-
+   books:[]
   },
   onLoad: function (options) {
     bookmodel.getHotList().then(res => {
-      console.log(res);
+      this.setData({
+        books:res
+      })
     })
   },
   onReady: function () {
