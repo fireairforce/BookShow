@@ -7,7 +7,7 @@ const tips = {
    3000: '期刊不存在'
 }
 export class HTTP {
-     request(url, data={}, method='GET') {
+     request({url, data={}, method='GET'}) {
        return new Promise((resolve, reject) => {
           this._request(url, resolve, reject, data, method);
        })

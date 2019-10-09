@@ -1,7 +1,7 @@
 import { ClassicModel } from './../../models/classic';
 import { LikeModel } from './../../models/like';
-let classicModel = new ClassicModel();
-let likeModel = new LikeModel(); 
+const classicModel = new ClassicModel();
+const likeModel = new LikeModel(); 
 Page({
   data: {
      classicData:null,
