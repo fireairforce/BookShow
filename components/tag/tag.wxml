@@ -1,3 +1,6 @@
 <view class="container">
     <text>{{ text }}</text>
+    <!-- <text>{{ num }}</text> -->
+    <!-- 从组件外部传递进来，类似于react的props.children -->
+    <slot name="after"></slot>
 </view>
