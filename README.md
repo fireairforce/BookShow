@@ -11,3 +11,5 @@ A application for mini-program
 
 ## Support
 小程序里面不能使用`async/await`。
+
+`wx.navigateTo()`可以帮助我们进行页面跳转

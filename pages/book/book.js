@@ -11,6 +11,12 @@ Page({
       })
     })
   },
+  onTap (e) {
+    const { id } = e.detail;
+    wx.navigateTo({
+        url: `/pages/book-detail/book-detail?id=${id}`,
+      })   
+  },
   onReady: function () {
 
   },
