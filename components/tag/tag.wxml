@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container tag-class">
     <text>{{ text }}</text>
     <!-- <text>{{ num }}</text> -->
     <!-- 从组件外部传递进来，类似于react的props.children -->

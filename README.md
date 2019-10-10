@@ -46,3 +46,15 @@ options: {
 </view>
 ```
 这样就修改成功了。
+
+通过在父组件里面使用选择器`css`样式来设定对应列表组件的样式(在组件是列表组件的情况下):
+```css
+/* 使用子元素选择器来使选择更加精准从而使得避免安全问题 */
+.comment-container > v-tag:nth-child(1) > view{
+    background-color: #fffbdd;
+}
+
+.comment-container > v-tag:nth-child(2) > view{
+    background-color: #eefbff;
+}
+```

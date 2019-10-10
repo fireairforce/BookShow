@@ -4,6 +4,8 @@ Component({
   options: {
     multipleSlots: true
   },
+  // 用来设定外部样式的，小程序的专有api
+  externalClasses: ['tag-class'],
   properties: {
     text: String,
   },
