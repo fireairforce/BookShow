@@ -1,1 +1,10 @@
-<text>pages/book-detail/book-detail.wxml</text>
+<view class="container">
+    <view class="head">
+        <image src="{{detail.image}}"/>
+          <text class="title">{{ detail.title }}</text>  
+          <text class="author">{{ detail.author }}</text> 
+    </view>
+    <view class="sub-container">
+        <text class="headline">短评</text>
+    </view>
+</view>
