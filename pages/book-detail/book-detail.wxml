@@ -6,5 +6,10 @@
     </view>
     <view class="sub-container">
         <text class="headline">短评</text>
+        <view class="comment-container">
+            <block wx:for="{{comments}}" wx:key="{{item.content}}">
+                <v-tag text="{{item.content}}"/>
+            </block>
+        </view>
     </view>
 </view>

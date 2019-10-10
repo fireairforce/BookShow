@@ -14,7 +14,6 @@ Page({
      const likeStatus = bookmodel.getLikeStatus(id);
      
      detail.then(res => {
-       console.log(res);
        this.setData({
           detail: res
        })
