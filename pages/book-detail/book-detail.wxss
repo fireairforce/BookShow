@@ -65,14 +65,18 @@
 }
 
 /* 使用子元素选择器来使选择更加精准从而使得避免安全问题 */
-.comment-container > v-tag:nth-child(1) > view{
+/* .comment-container > v-tag:nth-child(1) > view{
     background-color: #fffbdd;
 }
 
 .comment-container > v-tag:nth-child(2) > view{
     background-color: #eefbff;
+} */
+
+.ex-tag1 {
+    background-color: #fffbdd !important;
 }
 
-.ex-tg {
-    background-color: #fffbdd;
+.ex-tag2 {
+    background-color: #eefbff;
 }
