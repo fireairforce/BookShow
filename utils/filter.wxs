@@ -1,6 +1,7 @@
 var format = function (text) {
-    //    wxs
-    return '123'
+    //    wxs把传递过来的文本用正则表达式过滤一下
+   var reg = getRegExp('\\\\n','g')
+   return text&&text.replace(reg,'\n');
 }
 
 // wxs在小程序里面称之为一个独立的模块，ES6模块
