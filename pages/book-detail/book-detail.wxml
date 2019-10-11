@@ -1,3 +1,5 @@
+<wxs src="../../utils/filter.wxs" module="util" />
+
 <view class="container">
     <view class="head">
         <image src="{{detail.image}}"/>
@@ -13,5 +15,9 @@
                 </v-tag>
             </block>
         </view>
+    </view>
+    <view class="sub-container">
+       <text class="headline">内容简介</text>
+       <text class="content">{{util.format(detail.summary)}}</text>      
     </view>
 </view>

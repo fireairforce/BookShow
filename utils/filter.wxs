@@ -1,0 +1,12 @@
+var format = function (text) {
+    //    wxs
+    return '123'
+}
+
+// wxs在小程序里面称之为一个独立的模块，ES6模块
+// 这里不能使用js里面的 es6 的语法
+// wxs和js是两种不同的语言，他有自己的语法
+
+module.exports = {
+    format: format
+}
