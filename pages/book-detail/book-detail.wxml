@@ -20,4 +20,29 @@
        <text class="headline">内容简介</text>
        <text class="content" decode="{{true}}">{{util.format(detail.summary)}}</text>      
     </view>
+    <view class="sub-container">
+        <text class="headline">书本信息</text>
+        <view class="detail-container">
+            <view class="vertical description">
+                <text>出版社</text>
+                <text>出版年</text>
+                <text>页数</text>
+                <text>定价</text>
+                <text>装帧</text>
+            </view>
+            <view class="vertical">
+                <text>{{detail.publisher}}</text>
+                <text>{{detail.pubdate}}</text>
+                <text>{{detail.pages}}</text>
+                <text>{{detail.price}}</text>
+                <text>{{detail.binding}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="post-container">
+        <view class="post-fake">
+            <text>输入短评</text>
+        </view>
+    </view>
 </view>
