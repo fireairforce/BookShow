@@ -65,6 +65,8 @@
     </view>
 </view>
 
+<v-mask wx:if="{{posting}}" />
+
 <wxs module="tool">
    var highlight = function(index) {
        if(index === 0) {
