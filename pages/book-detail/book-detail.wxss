@@ -83,5 +83,5 @@
 }
 
 .ex-tag2 {
-    background-color: #eefbff;
+    background-color: #eefbff !important;
 }
