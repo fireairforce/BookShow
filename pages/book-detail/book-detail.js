@@ -54,7 +54,8 @@ Page({
   },
 
   onPost(e) {
-    const comment = e.detail.text;
+    const comment = e.detail.text ||  e.detail.value;
+    // 获取到text输入的value值
     //  设置一个长度检测
     if(comment.length > 12) {
       wx.showToast({
@@ -71,11 +72,12 @@ Page({
       })
       // 把评论往数组的前面插入
       this.data.comments.unshift({
-        comment,
+        content:comment,
         nums: 1
       })
       this.setData({
-        comments: this.data.comments
+        comments: this.data.comments,
+        posting: false
       })
     })
   }

@@ -61,7 +61,7 @@
                 </v-tag>
             </block>
         </view>
-        <input class="post" placeholder="短评最多输入12个字"></input> 
+        <input bindconfirm="onPost" class="post" placeholder="短评最多输入12个字"></input> 
     </view>
 </view>
 
