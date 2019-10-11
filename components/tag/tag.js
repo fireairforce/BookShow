@@ -13,6 +13,10 @@ Component({
 
   },
   methods: {
-
+    onTap(e) {
+       this.triggerEvent('tapping',{
+         text: this.properties.text
+       })
+    }
   }
 })

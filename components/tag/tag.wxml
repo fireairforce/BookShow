@@ -1,4 +1,5 @@
-<view class="container tag-class">
+<view class="container tag-class" bind:tap="onTap">
+    <slot name="before"></slot>
     <text>{{ text }}</text>
     <!-- <text>{{ num }}</text> -->
     <!-- 从组件外部传递进来，类似于react的props.children -->
