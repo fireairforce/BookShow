@@ -131,3 +131,15 @@
     font-size: 22rpx;
     padding-left: 20rpx;
 }
+
+.like {
+    margin-right: 30rpx;
+    margin-top: 10rpx;
+}
+
+.like-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
