@@ -57,6 +57,11 @@ Page({
     const comment = e.detail.text ||  e.detail.value;
     // 获取到text输入的value值
     //  设置一个长度检测
+
+    if(!comment) {
+      return;
+    }
+
     if(comment.length > 12) {
       wx.showToast({
         title: '短评最多12个字',
