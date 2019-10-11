@@ -7,7 +7,8 @@ Page({
     comments: [],
     detail: null,
     likeStatus: false,
-    likeCount: 0
+    likeCount: 0,
+    posting: false
   },
   onLoad: function (options) {
      const { id } = options;
@@ -38,5 +39,17 @@ Page({
   onLike (e) {
     const like_or_cancel = e.detail.behavior;
     likeModel.like(like_or_cancel, this.data.detail.id, 400)
+  },
+
+  onFakePost() {
+     this.setData({
+       posting: true
+     })
+  },
+
+  onCancel() {
+    this.setData({
+      posting: false
+    })
   }
 })
