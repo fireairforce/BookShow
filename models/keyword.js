@@ -1,4 +1,6 @@
-class KeyWordModel {
+import { HTTP } from "../utils/http-p";
+
+class KeyWordModel extends HTTP {
     key = 'q';
     maxLength = 10;
     getHistory() {
@@ -10,7 +12,9 @@ class KeyWordModel {
     }
 
     getHot() {
-       
+       return this.request({
+           url: `/book/hot_keyword`
+       })
     }
 
     addToHistory(keyword) {

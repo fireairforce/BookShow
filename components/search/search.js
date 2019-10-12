@@ -7,12 +7,20 @@ Component({
 
   },
   data: {
-    historyWords: []
+    historyWords: [],
+    hotWords: []
   },
   attached() {
     const historyWords = keywordModel.getHistory();
+    const hotwords = keywordModel.getHot();
     this.setData({
       historyWords
+    })
+    hotwords.then(res=>{
+      // 获取到热评的数据
+      this.setData({
+         hotWords: res.hot  
+      })
     })
   },
   methods: {
