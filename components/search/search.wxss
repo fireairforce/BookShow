@@ -108,7 +108,7 @@
     width: 630rpx;
   }
   
-  .tags tag-cmp {
+  .tags v-tag{
     margin-right: 10px;
     margin-bottom: 10px;
   }
@@ -135,7 +135,4 @@
     font-size: 14px;
   }
   
-  .test {
-    background-color: #000;
-  }
   

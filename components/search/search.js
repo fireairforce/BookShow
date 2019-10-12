@@ -7,7 +7,13 @@ Component({
 
   },
   data: {
-
+    historyWords: []
+  },
+  attached() {
+    const historyWords = keywordModel.getHistory();
+    this.setData({
+      historyWords
+    })
   },
   methods: {
     onCancel(){
