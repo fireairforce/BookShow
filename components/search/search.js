@@ -1,3 +1,7 @@
+import { KeyWordModel } from '../../models/keyword';
+
+const keywordModel = new KeyWordModel();
+
 Component({
   properties: {
 
@@ -7,9 +11,12 @@ Component({
   },
   methods: {
     onCancel(){
-      this.triggerEvent('cancelSearch',{
-       
-      })
+      this.triggerEvent('cancelSearch',{},{})
+    },
+    onConfirm(e) {
+      // console.log(e.detail.value);
+      const word = e.detail.value;
+      keywordModel.addToHistory(word);
     }
   }
 })
