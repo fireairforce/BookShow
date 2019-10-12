@@ -6,6 +6,10 @@ Component({
 
   },
   methods: {
-
+    onCancel(){
+      this.triggerEvent('cancelSearch',{
+       
+      })
+    }
   }
 })

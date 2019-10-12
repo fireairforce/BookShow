@@ -1,10 +1,10 @@
 <view class="container">
     <view class="header">
         <view class="search-container">
-            <image class="icon" src="../../images/icon/search.png"/>
+            <image class="icon" src="images/search.png"/>
             <input placeholder-class="in-bar" placeholder="书籍名称" class="bar" auto-focus="true" />
-             <image class="cancel-img" src="../../images/icon/share.png" />              
+             <image class="cancel-img" src="images/cancel.png" />              
         </view>
-        <view class="cancel">取消</view>
+        <view class="cancel" bind:tap="onCancel">取消</view>
     </view>
 </view>

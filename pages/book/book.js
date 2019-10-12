@@ -2,6 +2,7 @@ import { BookModel } from '../../models/book';
 const bookmodel = new BookModel();
 Page({
   data: {
+   searching: false, 
    books:[]
   },
   onLoad: function (options) {
@@ -17,25 +18,14 @@ Page({
         url: `/pages/book-detail/book-detail?id=${id}`,
       })   
   },
-  onReady: function () {
-
+  onSearch() {
+    this.setData({
+      searching: true
+    })
   },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
+  onCancel() {
+    this.setData({
+      searching:false
+    })
   }
 })

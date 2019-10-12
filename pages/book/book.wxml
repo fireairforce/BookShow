@@ -1,8 +1,8 @@
 <!-- 给item指定别名block上面加个属性 wx:for-item="itemName" block这个标签没有实际意义-->
 
-<view class="container">
+<view class="container" wx:if="{{!searching}}">
     <view class="header">
-        <view class="box">
+        <view class="box" bind:tap="onSearch">
             <image src="/images/icon/search.png" />
             <text>搜索书籍</text>
         </view>
@@ -16,3 +16,5 @@
         </view>
     </view>
 </view>
+
+<v-search wx:else bind:cancelSearch="onCancel" />
