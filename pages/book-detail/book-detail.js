@@ -17,7 +17,9 @@ Page({
      const comments = bookmodel.getComment(id);
      const likeStatus = bookmodel.getLikeStatus(id);
       // 把多个promise实例合并起来去进行执行,它会返回一个新的promise,三个promise全部完成之后才会执行then方法的回调
-     wx.showLoading();     
+      //  Promise.all 只会等待里面请求的最长的时间
+      //  Promise.race 竞争会率先执行最快的promise
+      wx.showLoading();     
       Promise.all([detail, comments, likeStatus]).then(res=>{
        this.setData({
          detail: res[0],
