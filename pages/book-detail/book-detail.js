@@ -10,30 +10,42 @@ Page({
     likeCount: 0,
     posting: false
   },
+  // 在这个组件这边数据请求过程中添加一个loading函数
   onLoad: function (options) {
      const { id } = options;
      const detail = bookmodel.getDetail(id);
      const comments = bookmodel.getComment(id);
      const likeStatus = bookmodel.getLikeStatus(id);
-     
-     detail.then(res => {
+      // 把多个promise实例合并起来去进行执行,它会返回一个新的promise,三个promise全部完成之后才会执行then方法的回调
+     wx.showLoading();     
+      Promise.all([detail, comments, likeStatus]).then(res=>{
        this.setData({
-          detail: res
+         detail: res[0],
+         comments: res[1].comments,
+         likeStatus: res[2].like_status,
+         likeCount: res[2].fav_nums
+       },()=>{
+        wx.hideLoading();
        })
-     })
+     }) 
 
-     comments.then(res => {
-       this.setData({
-          comments: res.comments
-       })
-     })
+    //  detail.then(res => {
+    //    this.setData({
+    //       detail: res
+    //    })
+    //  })
+    //  comments.then(res => {
+    //    this.setData({
+    //       comments: res.comments
+    //    })
+    //  })
+    //  likeStatus.then(res => {
+    //    this.setData({
+    //      likeStatus: res.like_status,
+    //      likeCount: res.fav_nums
+    //    })
+    //  })
 
-     likeStatus.then(res => {
-       this.setData({
-         likeStatus: res.like_status,
-         likeCount: res.fav_nums
-       })
-     })
   },
 
   onLike (e) {
