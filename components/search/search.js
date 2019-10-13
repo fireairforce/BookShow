@@ -11,7 +11,9 @@ Component({
   data: {
     historyWords: [],
     hotWords: [],
-    dataArray: []
+    dataArray: [],
+    searching: false,
+    searchText: ''
   },
   attached() {
     const historyWords = keywordModel.getHistory();
@@ -36,6 +38,11 @@ Component({
       })
       // 在这里想服务器请求相关书籍的数据,text是标签
       const q = e.detail.value || e.detail.text;
+      if(!e.detail.value){
+        this.setData({
+          searchText: q
+        })
+      }
       bookModel.search(0, q).then(res=>{
         this.setData({
           dataArray: res.books
