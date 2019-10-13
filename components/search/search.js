@@ -1,6 +1,8 @@
 import { KeyWordModel } from '../../models/keyword';
+import { BookModel } from '../../models/book';
 
 const keywordModel = new KeyWordModel();
+const bookModel = new BookModel();
 
 Component({
   properties: {
@@ -8,7 +10,8 @@ Component({
   },
   data: {
     historyWords: [],
-    hotWords: []
+    hotWords: [],
+    dataArray: []
   },
   attached() {
     const historyWords = keywordModel.getHistory();
@@ -30,7 +33,14 @@ Component({
     onConfirm(e) {
       // console.log(e.detail.value);
       const word = e.detail.value;
-      keywordModel.addToHistory(word);
+      // 在这里想服务器请求相关书籍的数据
+      const q = e.detail.value;
+      bookModel.search(0, q).then(res=>{
+        this.setData({
+          dataArray: res.books
+        })
+        keywordModel.addToHistory(word);
+      })
     }
   }
 })
