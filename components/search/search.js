@@ -31,15 +31,16 @@ Component({
       this.triggerEvent('cancelSearch',{},{})
     },
     onConfirm(e) {
-      // console.log(e.detail.value);
-      const word = e.detail.value;
+      this.setData({
+        searching: true
+      })
       // 在这里想服务器请求相关书籍的数据
       const q = e.detail.value;
       bookModel.search(0, q).then(res=>{
         this.setData({
           dataArray: res.books
         })
-        keywordModel.addToHistory(word);
+        keywordModel.addToHistory(q);
       })
     }
   }
