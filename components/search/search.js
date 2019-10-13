@@ -34,13 +34,19 @@ Component({
       this.setData({
         searching: true
       })
-      // 在这里想服务器请求相关书籍的数据
-      const q = e.detail.value;
+      // 在这里想服务器请求相关书籍的数据,text是标签
+      const q = e.detail.value || e.detail.text;
       bookModel.search(0, q).then(res=>{
         this.setData({
           dataArray: res.books
         })
         keywordModel.addToHistory(q);
+      })
+    },
+    onDelete(e) {
+      console.log(`hhh`);
+      this.setData({
+        searching: false
       })
     }
   }

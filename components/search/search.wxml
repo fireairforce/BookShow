@@ -3,7 +3,7 @@
         <view class="search-container">
             <image class="icon" src="images/search.png"/>
             <input bind:confirm="onConfirm" placeholder-class="in-bar" placeholder="书籍名称" class="bar" auto-focus="true" />
-            <image class="cancel-img" src="images/cancel.png" />              
+            <image bind:tap="onDelete" class="cancel-img" src="images/cancel.png" />              
         </view>
         <view class="cancel" bind:tap="onCancel">取消</view>
     </view>
@@ -27,7 +27,7 @@
             </view>
             <view class="tags">
                 <block wx:for="{{hotWords}}" wx:key="{{item}}">
-                    <v-tag text="{{item}}"/>
+                    <v-tag bind:tapping="onConfirm" text="{{item}}"/>
                 </block> 
             </view>
         </view>
