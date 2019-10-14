@@ -1,10 +1,13 @@
 import { KeyWordModel } from '../../models/keyword';
 import { BookModel } from '../../models/book';
+import { paginationBev } from '../behaviors/pagination';
 
 const keywordModel = new KeyWordModel();
 const bookModel = new BookModel();
 
 Component({
+
+  behaviors: [ paginationBev ],
   properties: {
     more:{
       type: String,
@@ -15,7 +18,6 @@ Component({
   data: {
     historyWords: [],
     hotWords: [],
-    dataArray: [],
     searching: false,
     searchText: '',
     loading: false,
@@ -42,15 +44,18 @@ Component({
       if(this.data.loading) {
         return;
       }
-       const { length } = this.data.dataArray;
        this.data.loading = true;
-       bookModel.search(length, this.data.searchText).then(res=> {
-          const tempArray = this.data.dataArray.concat(res.books);
-          this.setData({
-            dataArray: tempArray,
-            loading: false
+       if(this.hasMore()){
+          bookModel.search(this.getCurrentStart(), this.data.searchText)
+          .then(res=> {
+            // const tempArray = this.data.dataArray.concat(res.books);
+            this.setMoreData(res.books); 
+            // this.setData({
+            //   dataArray: tempArray,
+            //   loading: false
+            // })
           })
-       })
+       }
     },
     onCancel(){
       this.triggerEvent('cancelSearch',{},{})
@@ -67,9 +72,9 @@ Component({
         })
       }
       bookModel.search(0, q).then(res=>{
-        this.setData({
-          dataArray: res.books
-        })
+        // 将获取数据的行为交到behaviors里面去进行管理
+        this.setMoreData(res.books);
+        this.setTotal(res.total);
         keywordModel.addToHistory(q);
       })
     },
