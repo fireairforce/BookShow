@@ -1,9 +1,11 @@
 import { BookModel } from '../../models/book';
+import { random } from '../../utils/randomString';
 const bookmodel = new BookModel();
 Page({
   data: {
    searching: false, 
-   books:[]
+   books:[],
+   more: ''
   },
   onLoad: function (options) {
     bookmodel.getHotList().then(res => {
@@ -26,6 +28,11 @@ Page({
   onCancel() {
     this.setData({
       searching:false
+    })
+  },
+  onReachBottom() {
+    this.setData({
+      more: random(16)
     })
   }
 })

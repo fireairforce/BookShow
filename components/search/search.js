@@ -6,7 +6,11 @@ const bookModel = new BookModel();
 
 Component({
   properties: {
-
+    more:{
+      type: String,
+      // 在more这个值发生改变的时候会执行这个监听
+      observer: '_load_more'
+    },
   },
   data: {
     historyWords: [],
@@ -29,6 +33,9 @@ Component({
     })
   },
   methods: {
+    _load_more() {
+       console.log(`123123`);
+    },
     onCancel(){
       this.triggerEvent('cancelSearch',{},{})
     },
@@ -51,7 +58,6 @@ Component({
       })
     },
     onDelete(e) {
-      console.log(`hhh`);
       this.setData({
         searching: false
       })
