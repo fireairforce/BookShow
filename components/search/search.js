@@ -12,7 +12,7 @@ Component({
     more:{
       type: String,
       // 在more这个值发生改变的时候会执行这个监听
-      observer: '_load_more'
+      observer: 'loadMore'
     },
   },
   data: {
@@ -36,20 +36,21 @@ Component({
     })
   },
   methods: {
-    _load_more() {
+    loadMore() {
        if(!this.data.searchText) {
          return;
        }
       //  同时发送两个请求,一次只发送一个请求，形成一个锁
-      if(this.data.loading) {
+      if(this._isLocked()) {
         return;
       }
-       this.data.loading = true;
        if(this.hasMore()){
-          bookModel.search(this.getCurrentStart(), this.data.searchText)
+         this._locked();
+         bookModel.search(this.getCurrentStart(), this.data.searchText)
           .then(res=> {
             // const tempArray = this.data.dataArray.concat(res.books);
             this.setMoreData(res.books); 
+            this._unlocked();
             // this.setData({
             //   dataArray: tempArray,
             //   loading: false
@@ -61,9 +62,8 @@ Component({
       this.triggerEvent('cancelSearch',{},{})
     },
     onConfirm(e) {
-      this.setData({
-        searching: true
-      })
+      this._showResult();
+      this.initialize();
       // 在这里想服务器请求相关书籍的数据,text是标签
       const q = e.detail.value || e.detail.text;
       if(!e.detail.value){
@@ -78,10 +78,27 @@ Component({
         keywordModel.addToHistory(q);
       })
     },
-    onDelete(e) {
+    onDelete() {
+      this._closeResult();
+    },
+    _showResult () {
+      this.setData({
+        searching: true
+      })
+    },
+    _closeResult () {
       this.setData({
         searching: false
       })
-    }
+    },
+    _isLocked () {
+      return this.data.loading ? true : false;
+    },
+    _locked () {
+      this.data.loading = true;
+    },
+    _unlocked () {
+      this.data.loading = false;
+    },
   }
 })
