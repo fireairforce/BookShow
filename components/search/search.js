@@ -35,6 +35,16 @@ Component({
   methods: {
     _load_more() {
        console.log(`123123`);
+       if(!this.data.searchText) {
+         return;
+       }
+       const { length } = this.data.dataArray;
+       bookModel.search(length, this.data.searchText).then(res=> {
+          const tempArray = this.data.dataArray.concat(res.books);
+          this.setData({
+            dataArray: tempArray
+          })
+       })
     },
     onCancel(){
       this.triggerEvent('cancelSearch',{},{})
