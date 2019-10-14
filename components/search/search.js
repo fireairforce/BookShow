@@ -55,6 +55,9 @@ Component({
             //   dataArray: tempArray,
             //   loading: false
             // })
+          },()=>{
+            // 关闭的在请求失败时候的死锁问题
+            this._unlocked();
           })
        }
     },
