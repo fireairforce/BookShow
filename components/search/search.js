@@ -17,7 +17,8 @@ Component({
     hotWords: [],
     dataArray: [],
     searching: false,
-    searchText: ''
+    searchText: '',
+    loading: false,
   },
   attached() {
     const historyWords = keywordModel.getHistory();
@@ -34,15 +35,20 @@ Component({
   },
   methods: {
     _load_more() {
-       console.log(`123123`);
        if(!this.data.searchText) {
          return;
        }
+      //  同时发送两个请求,一次只发送一个请求，形成一个锁
+      if(this.data.loading) {
+        return;
+      }
        const { length } = this.data.dataArray;
+       this.data.loading = true;
        bookModel.search(length, this.data.searchText).then(res=> {
           const tempArray = this.data.dataArray.concat(res.books);
           this.setData({
-            dataArray: tempArray
+            dataArray: tempArray,
+            loading: false
           })
        })
     },
