@@ -3,7 +3,9 @@
         <view class="search-container">
             <image class="icon" src="images/search.png"/>
             <input bind:confirm="onConfirm" value="{{searchText}}" placeholder-class="in-bar" placeholder="书籍名称" class="bar" auto-focus="true" />
-            <image bind:tap="onDelete" class="cancel-img" src="images/cancel.png" />              
+            <view class="cancelButton" bind:tap="onDelete">
+              <image class="cancel-img" src="images/cancel.png" />                              
+            </view>              
         </view>
         <view class="cancel" bind:tap="onCancel">取消</view>
     </view>
@@ -33,7 +35,7 @@
         </view>
     </view>
      <!-- 用来展示书籍搜索数据展示的结果 -->
-    <view wx-else class="books-container">
+    <view wx-if="{{searching}}" class="books-container">
         <block wx:for="{{dataArray}}" wx:key="{{ item.id }}">
             <v-book book="{{item}}" class="book" />
         </block>    

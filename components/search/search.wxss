@@ -37,6 +37,14 @@
   .books-container book-cmp {
     margin-bottom: 25rpx;
   }
+
+  .cancelButton{
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .cancel-img {
     width: 14px;
