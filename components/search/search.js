@@ -63,12 +63,13 @@ Component({
        }
     },
     onCancel(){
+      this.initialize();
       this.triggerEvent('cancelSearch',{},{})
     },
     onConfirm(e) {
       this._showResult();
       this._showLoadingCenter();
-      this.initialize();
+      // this.initialize();
       // 在这里想服务器请求相关书籍的数据,text是标签
       const q = e.detail.value || e.detail.text;
       if(!e.detail.value){
@@ -85,6 +86,7 @@ Component({
       })
     },
     onDelete() {
+      this.initialize();
       this._closeResult();
     },
     _showResult () {
@@ -101,10 +103,14 @@ Component({
       return this.data.loading ? true : false;
     },
     _locked () {
-      this.data.loading = true;
+      this.setData({
+        loading: true,
+      })
     },
     _unlocked () {
-      this.data.loading = false;
+      this.setData({
+        loading: false
+      })
     },
     _showLoadingCenter () {
       this.setData({

@@ -2,7 +2,8 @@ const paginationBev = Behavior({
     data: {
         // 管理一个页面里面的所有数据
         dataArray: [],
-        total: null
+        total: null,
+        noneResult: false
     },
     methods: {
         //  用来加载更多的数据
@@ -20,6 +21,12 @@ const paginationBev = Behavior({
         setTotal (total) {
           this.setData({
               total
+          },()=>{
+              if(total ===0) {
+                  this.setData({
+                      noneResult: true,
+                  })
+              }
           })
         },
         
@@ -34,8 +41,9 @@ const paginationBev = Behavior({
         initialize () {
             this.setData({
                 dataArray: [],
-                total: null
+                noneResult: false,
             })
+            this.data.total = null;
         }
     }
 })
