@@ -21,6 +21,7 @@ Component({
     searching: false,
     searchText: '',
     loading: false,
+    loadingCenter: false
   },
   attached() {
     const historyWords = keywordModel.getHistory();
@@ -66,6 +67,7 @@ Component({
     },
     onConfirm(e) {
       this._showResult();
+      this._showLoadingCenter();
       this.initialize();
       // 在这里想服务器请求相关书籍的数据,text是标签
       const q = e.detail.value || e.detail.text;
@@ -79,6 +81,7 @@ Component({
         this.setMoreData(res.books);
         this.setTotal(res.total);
         keywordModel.addToHistory(q);
+        this._hideLoadingCenter();
       })
     },
     onDelete() {
@@ -103,5 +106,15 @@ Component({
     _unlocked () {
       this.data.loading = false;
     },
+    _showLoadingCenter () {
+      this.setData({
+        loadingCenter: true
+      })
+    },
+    _hideLoadingCenter () {
+      this.setData({
+        loadingCenter: false
+      })
+    }
   }
 })

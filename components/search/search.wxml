@@ -40,4 +40,6 @@
             <v-book book="{{item}}" class="book" />
         </block>    
     </view>
+
+    <v-loading class="loading-center" wx-if="{{loadingCenter}}" />
 </view>
