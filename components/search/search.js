@@ -20,7 +20,6 @@ Component({
     hotWords: [],
     searching: false,
     searchText: '',
-    loading: false,
     loadingCenter: false
   },
   attached() {
@@ -97,19 +96,6 @@ Component({
     _closeResult () {
       this.setData({
         searching: false
-      })
-    },
-    _isLocked () {
-      return this.data.loading ? true : false;
-    },
-    _locked () {
-      this.setData({
-        loading: true,
-      })
-    },
-    _unlocked () {
-      this.setData({
-        loading: false
       })
     },
     _showLoadingCenter () {

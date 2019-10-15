@@ -9,7 +9,7 @@
         </view>
         <view class="cancel" bind:tap="onCancel">取消</view>
     </view>
-
+    
     <view wx-if="{{!searching}}">
         <view class="history">
             <view class="title">

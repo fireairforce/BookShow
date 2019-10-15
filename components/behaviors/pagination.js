@@ -3,7 +3,8 @@ const paginationBev = Behavior({
         // 管理一个页面里面的所有数据
         dataArray: [],
         total: null,
-        noneResult: false
+        noneResult: false,
+        loading: false
     },
     methods: {
         //  用来加载更多的数据
@@ -42,9 +43,24 @@ const paginationBev = Behavior({
             this.setData({
                 dataArray: [],
                 noneResult: false,
+                loading: false
             })
             this.data.total = null;
-        }
+        },
+
+        _isLocked () {
+          return this.data.loading ? true : false;
+        },
+        _locked () {
+            this.setData({
+                loading: true,
+            })
+        },
+        _unlocked () {
+            this.setData({
+                loading: false
+            })
+        },
     }
 })
 
