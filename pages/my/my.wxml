@@ -5,9 +5,9 @@
     <v-btn 
       open-type="getUserInfo"
       class="avatar-position"
-      bind-getuserinfo="onGetUserInfo"
+      bind:getuserinfo="onGetUserInfo"
     >
-      <image slot="img" class="avatar" src="../../images/my/my.png"  />   
+      <image slot="img" class="avatar" src="{{userUrl?userUrl:'../../images/my/my.png'}}"  />   
     </v-btn>   
     <view class="about-container">
         <view class="about-us">

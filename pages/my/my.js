@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userUrl:''
   },
   onLoad: function (options) {
     this.userAuthorized();
@@ -25,7 +25,7 @@ Page({
        if(res.authSetting['scope.userInfo']) {
          wx.getUserInfo({
           success: (res) => {
-            console.log(res);
+            // console.log(res);
           }
          })
        } else {
@@ -39,6 +39,9 @@ Page({
   },
   onGetUserInfo (e) {
     const { userInfo } = e.detail;
+    this.setData({
+      userUrl: userInfo.avatarUrl
+    })
     console.log(userInfo);
   }
 })
