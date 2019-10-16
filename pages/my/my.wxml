@@ -12,6 +12,6 @@
         </view>
         <!-- 获取用户的信息,使用wx的api -->
         <!-- 如何获取 -->
-        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
     </view>  
+    <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权</button>
 </view>
