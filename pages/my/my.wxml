@@ -1,7 +1,14 @@
 <view class="container">
     <image src="../../images/my/my@bg.png" class="bg"/>
     <!-- 这里使用open-data这个api即可不授权获取到用户的头像等一些信息 -->
-    <open-data type="userAvatarUrl" class="avatar avatar-position" />
+    <!-- <open-data type="userAvatarUrl" class="avatar avatar-position" /> -->
+    <v-btn 
+      open-type="getUserInfo"
+      class="avatar-position"
+      bind-getuserinfo="onGetUserInfo"
+    >
+      <image slot="img" class="avatar" src="../../images/my/my.png"  />   
+    </v-btn>   
     <view class="about-container">
         <view class="about-us">
             <image src="../../images/my/about.png" />
@@ -13,5 +20,5 @@
         <!-- 获取用户的信息,使用wx的api -->
         <!-- 如何获取 -->
     </view>  
-    <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权</button>
+    <!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权</button> -->
 </view>

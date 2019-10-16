@@ -22,7 +22,7 @@ Page({
   userAuthorized () {
     wx.getSetting({
       success : res => {
-       if(data.authSetting['scope.userInfo']) {
+       if(res.authSetting['scope.userInfo']) {
          wx.getUserInfo({
           success: (res) => {
             console.log(res);
@@ -36,5 +36,9 @@ Page({
   },
   bindGetUserInfo (e) {
     // console.log(e.detail.userInfo)
+  },
+  onGetUserInfo (e) {
+    const { userInfo } = e.detail;
+    console.log(userInfo);
   }
 })
