@@ -1,7 +1,13 @@
 <view class="container">
     <view class="header">
         <v-epsoide class="epsoide" index="{{classicData.index}}"/>
-        <v-like class="like" bind:like="LikeClick" like="{{ like_status }}" count="{{ fav_nums }}"  />    
+        <view class="like-container">
+            <v-like class="like" bind:like="LikeClick" like="{{ like_status }}" count="{{ fav_nums }}"  /> 
+            <v-button class="share-btn" open-type="share">
+                <image class="share" slot="img" src="../../images/icon/share.png" />
+                
+            </v-button>  
+        </view> 
     </view>  
     <v-movie hidden="{{classicData.type !==100 }}" img="{{ classicData.image }}" content="{{ classicData.content }}" />
     <!-- wx-if在组件切换的时候可以触发组件的生命周期函数而hidden不会 -->
