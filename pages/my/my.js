@@ -1,3 +1,7 @@
+import { BookModel } from "../../models/book";
+
+const bookModel = new BookModel();
+
 Page({
 
   /**
@@ -5,14 +9,23 @@ Page({
    */
   data: {
     authorized: false,
-    userInfo: null
+    userInfo: null,
+    bookCount: 0
   },
   onLoad: function (options) {
     this.userAuthorized();
+    this.getBookCount();
     // 弹窗
     // 询问是否授权
     // API
     // button 组件 UI 让用户主动点击button
+  },
+  getBookCount(){
+    bookModel.getMyBookCount().then(res=> {
+      this.setData({
+        bookCount: res.count
+      })
+    })
   },
   userAuthorized () {
     wx.getSetting({
