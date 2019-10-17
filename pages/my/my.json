@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-tag": "/components/tag/tag",
-    "v-btn": "/components/image-button/image-button"
+    "v-btn": "/components/image-button/image-button",
+    "v-preview": "/components/preview/index"
   }
 }

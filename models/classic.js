@@ -42,6 +42,14 @@ class ClassicModel extends HTTP {
       return latest === index ? true : false;
     }
 
+    getMyFavor(success) {
+        const params = {
+            url: `classic/favor`,
+            success:success,
+        }
+        this.request(params);
+    }
+     
     // 把最新的index数据写入到缓存里面去
     _setLatestIndex (index) {
         // 这个是同步写入缓存

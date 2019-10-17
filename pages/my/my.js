@@ -1,20 +1,20 @@
 import { BookModel } from "../../models/book";
+import { ClassicModel } from "../../models/classic";
 
 const bookModel = new BookModel();
+const classicModel = new ClassicModel();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     authorized: false,
     userInfo: null,
-    bookCount: 0
+    bookCount: 0,
+    classics: null
   },
   onLoad: function (options) {
     this.userAuthorized();
     this.getBookCount();
+    this.getMyFavor();
     // 弹窗
     // 询问是否授权
     // API
@@ -24,6 +24,13 @@ Page({
     bookModel.getMyBookCount().then(res=> {
       this.setData({
         bookCount: res.count
+      })
+    })
+  },
+  getMyFavor() {
+    classicModel.getMyFavor(res => {
+      this.setData({
+        classics: res
       })
     })
   },
