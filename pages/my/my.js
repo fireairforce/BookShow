@@ -49,5 +49,10 @@ Page({
     wx.navigateTo({
       url: '/pages/about/about',
     })
+  },
+  onStudy (e) {
+    wx.navigateTo({
+      url: '/pages/course/course',
+    })
   }
 })
