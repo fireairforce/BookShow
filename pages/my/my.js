@@ -4,16 +4,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userUrl:''
+    authorized: false,
+    userInfo: null
   },
   onLoad: function (options) {
     this.userAuthorized();
-    // wx.getUserInfo({
-    //   // 只有用户授权之后才能获取到数据
-    //   success: res => {
-    //     console.log(res);
-    //   }
-    // });
     // 弹窗
     // 询问是否授权
     // API
@@ -25,23 +20,30 @@ Page({
        if(res.authSetting['scope.userInfo']) {
          wx.getUserInfo({
           success: (res) => {
-            // console.log(res);
+            this.setData({
+              authorized: true,
+              userInfo: res.userInfo
+            })
           }
          })
        } else {
-         console.log(`err`);
+         console.log(`用户暂时还未授权`);
        }
       }
     })
   },
-  bindGetUserInfo (e) {
+  // bindGetUserInfo (e) {
     // console.log(e.detail.userInfo)
-  },
+  // },
   onGetUserInfo (e) {
     const { userInfo } = e.detail;
-    this.setData({
-      userUrl: userInfo.avatarUrl
-    })
-    console.log(userInfo);
+    
+    if(userInfo){
+      console.log(userInfo);
+      this.setData({
+        userInfo,
+        authorized: true
+      })
+    }
   }
 })

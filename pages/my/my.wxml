@@ -3,12 +3,19 @@
     <!-- 这里使用open-data这个api即可不授权获取到用户的头像等一些信息 -->
     <!-- <open-data type="userAvatarUrl" class="avatar avatar-position" /> -->
     <v-btn 
+      wx-if="{{!authorized}}"
       open-type="getUserInfo"
       class="avatar-position"
       bind:getuserinfo="onGetUserInfo"
     >
-      <image slot="img" class="avatar" src="{{userUrl?userUrl:'../../images/my/my.png'}}"  />   
-    </v-btn>   
+      <image slot="img" class="avatar" src="../../images/my/my.png"  />   
+    </v-btn> 
+    
+    <view wx-if="{{authorized}}" class="avatar-container avatar-position">
+        <image class="avatar" src="{{ userInfo.avatarUrl }}"/>
+        <text>{{userInfo.nickName}}</text>      
+    </view>
+      
     <view class="about-container">
         <view class="about-us">
             <image src="../../images/my/about.png" />
