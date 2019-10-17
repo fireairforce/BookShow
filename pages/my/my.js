@@ -37,7 +37,6 @@ Page({
   // },
   onGetUserInfo (e) {
     const { userInfo } = e.detail;
-    
     if(userInfo){
       console.log(userInfo);
       this.setData({
@@ -45,5 +44,10 @@ Page({
         authorized: true
       })
     }
+  },
+  onJumpToAbout (e) {
+    wx.navigateTo({
+      url: '/pages/about/about',
+    })
   }
 })
